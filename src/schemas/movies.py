@@ -64,22 +64,6 @@ class MovieCreateSchema(BaseModel):
             raise ValueError('Date cannot be more than one year in the future')
         return value
 
-    @field_validator('country')
-    @classmethod
-    def validate_country_code(cls, value: str) -> str:
-        if not value:
-            raise ValueError('Country code is required')
-
-        country_code = value.upper()
-
-        country = pycountry.countries.get(alpha_3=country_code)
-        if not country:
-            raise ValueError(
-                f"'{country_code}' is not a valid ISO 3166-1 alpha-3 country code"
-            )
-
-        return country_code
-
 
 class MovieDetailSchema(BaseModel):
     id: int
