@@ -2,7 +2,8 @@ import os
 
 from database.models import (
     Base,
-    MovieModel
+    MovieModel,
+    MovieStatusEnum
 )
 from database.session_sqlite import reset_sqlite_database as reset_database
 
